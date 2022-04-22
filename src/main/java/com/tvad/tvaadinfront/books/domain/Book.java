@@ -1,18 +1,20 @@
 package com.tvad.tvaadinfront.books.domain;
 
+import com.tvad.tvaadinfront.books.BookType;
+
 import java.util.Objects;
 
 public class Book {
     private String title;
     private String author;
     private String publicationYear;
-    private String type;
+    private BookType type;
 
     public Book() {
 
     }
 
-    public Book(String title, String author, String publicationYear, String type) {
+    public Book(String title, String author, String publicationYear, BookType type) {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
@@ -31,7 +33,7 @@ public class Book {
         return publicationYear;
     }
 
-    public String getType() {
+    public BookType getType() {
         return type;
     }
 
@@ -68,7 +70,7 @@ public class Book {
         this.publicationYear = publicationYear;
     }
 
-    public void setType(String type) {
+    public void setType(BookType type) {
         this.type = type;
     }
 }

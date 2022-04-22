@@ -1,9 +1,11 @@
 package com.tvad.tvaadinfront.books;
 
 import com.tvad.tvaadinfront.books.domain.Book;
+import com.tvad.tvaadinfront.books.domain.BookForm;
 import com.tvad.tvaadinfront.books.service.BookService;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
@@ -18,6 +20,8 @@ public class MainView extends VerticalLayout {
     private Grid<Book> grid = new Grid<>(Book.class);
     private TextField filter = new TextField();
 
+    private BookForm form = new BookForm(this);
+
     public MainView() {
 
         filter.setPlaceholder("Filter by title");
@@ -26,12 +30,15 @@ public class MainView extends VerticalLayout {
         filter.addValueChangeListener(e -> update());
 
         grid.setColumns("title", "author", "publicationYear", "type");
-        add(grid);
+        HorizontalLayout mainContent = new HorizontalLayout(grid, form);
+        mainContent.setSizeFull();
+        grid.setSizeFull();
 
-        add(filter, grid);
-
+        add(filter, mainContent);
         setSizeFull();
         refresh();
+
+        //grid.asSingleSelect().addValueChangeListener(event -> form.setBook(grid.assSingleSelect().getValue()));
 
     }
 
