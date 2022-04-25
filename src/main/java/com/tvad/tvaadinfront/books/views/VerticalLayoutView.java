@@ -8,7 +8,9 @@ import com.vaadin.flow.router.Route;
 @Route("vertical-layout")
 public class VerticalLayoutView extends VerticalLayout {
     public VerticalLayoutView() {
+        var toolbar = new Toolbar();
         add(
+                toolbar,
                 new Paragraph("Paragraph 1"),
                 new Paragraph("Paragraph 2"),
                 new Button("Button")
